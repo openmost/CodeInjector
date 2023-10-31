@@ -2,5 +2,5 @@
 
 ## Description
 
-Add your plugin description here.
+Add code to your Matomo instance in a second
 
