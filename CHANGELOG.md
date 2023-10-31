@@ -1,5 +1,10 @@
 ## Changelog
 
+### v4.0.2
+
+- Add readme
+- Release on Marketplace
+
 ### v4.0.1
 
 - Fix input validators
