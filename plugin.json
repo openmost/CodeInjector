@@ -1,29 +1,28 @@
 {
     "name": "CodeInjector",
-    "description": "test",
-    "version": "0.1.0",
+    "description": "Add code to your Matomo instance",
+    "version": "4.0.0",
     "theme": false,
     "require": {
         "matomo": ">=4.15.1-stable,<5.0.0-b1"
     },
     "authors": [
         {
-            "name": "Matomo",
-            "email": "",
-            "homepage": ""
+            "name": "Openmost",
+            "email": "ronan@openmost.io",
+            "homepage": "https://openmost.io"
         }
     ],
     "support": {
-        "email": "",
-        "issues": "",
-        "forum": "",
-        "irc": "",
-        "wiki": "",
-        "source": "",
-        "docs": "",
-        "rss": ""
+        "email": "ronan@openmost.io"
     },
-    "homepage": "",
+    "homepage":"https://openmost.io",
     "license": "GPL v3+",
-    "keywords": []
+    "keywords": [
+        "code",
+        "injector",
+        "add",
+        "head",
+        "body"
+    ]
 }

@@ -10,18 +10,20 @@ namespace Piwik\Plugins\CodeInjector;
 
 class CodeInjector extends \Piwik\Plugin
 {
+
     public function registerEvents()
     {
-        return [
-            'CronArchive.getArchivingAPIMethodForPlugin' => 'getArchivingAPIMethodForPlugin',
-        ];
+        return array(
+            'Template.bodyTop' => 'addCodeToBodyTop'
+        );
     }
 
-    // support archiving just this plugin via core:archive
-    public function getArchivingAPIMethodForPlugin(&$method, $plugin)
+    public function addCodeToBodyTop()
     {
-        if ($plugin == 'CodeInjector') {
-            $method = 'CodeInjector.getExampleArchivedMetric';
-        }
+        $settings = new SystemSettings();
+        $bodyTop = $settings->bodyTop->getValue();
+
+        echo $bodyTop;
     }
+
 }
