@@ -1,7 +1,7 @@
 {
     "name": "CodeInjector",
-    "description": "Add code to your Matomo instance",
-    "version": "4.0.0",
+    "description": "Inject CSS or JS code to your Matomo instance",
+    "version": "4.0.1",
     "theme": false,
     "require": {
         "matomo": ">=4.15.1-stable,<5.0.0-b1"
@@ -14,7 +14,9 @@
         }
     ],
     "support": {
-        "email": "ronan@openmost.io"
+        "email": "ronan@openmost.io",
+        "issues": "https://github.com/openmost/CodeInjector/issues",
+        "source": "https://github.com/openmost/CodeInjector"
     },
     "homepage":"https://openmost.io",
     "license": "GPL v3+",

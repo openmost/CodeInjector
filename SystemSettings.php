@@ -36,7 +36,6 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
             $field->title = 'Add code to Matomo';
             $field->uiControl = FieldConfig::UI_CONTROL_TEXTAREA;
             $field->description = 'Add code to the <body> section of the page';
-            $field->validators[] = new NotEmpty();
         });
     }
 }
