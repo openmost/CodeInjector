@@ -1,5 +1,6 @@
 {
   "CodeInjector": {
+    "CodeInjector" : "Code Injector",
     "BodyTopTitle": "Add code at the top of body tag in all pages",
     "BodyTopDescription": "This code will be executed on all pages. Be careful, bad usage can break your instance.",
     "BodyBottomTitle": "Add code at the bottom of body tag in all pages",

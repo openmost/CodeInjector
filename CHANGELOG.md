@@ -1,5 +1,9 @@
 ## Changelog
 
+### v4.0.4
+
+- Fix FAQ syntax
+
 ### v4.0.3
 
 - Support body bottom code

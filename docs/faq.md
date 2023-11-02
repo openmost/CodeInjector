@@ -3,6 +3,7 @@
 __How to install this plugin__
 
 This plugin is available in the official marketplace of Matomo. You have to install the same way as other plugins
+
 - Go to the administration panel
 - Look for the Marketplace section and select "Plugins" in the dropdown
 - Then search for "**CodeInjector**", install and activate the plugin.
