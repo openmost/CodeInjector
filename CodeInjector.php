@@ -14,7 +14,8 @@ class CodeInjector extends \Piwik\Plugin
     public function registerEvents()
     {
         return array(
-            'Template.bodyTop' => 'addCodeToBodyTop'
+            'Template.bodyTop' => 'addCodeToBodyTop',
+            'Template.bodyBottom' => 'addCodeToBodyBottom'
         );
     }
 
@@ -22,8 +23,14 @@ class CodeInjector extends \Piwik\Plugin
     {
         $settings = new SystemSettings();
         $bodyTop = $settings->bodyTop->getValue();
-
         echo $bodyTop;
+    }
+
+    public function addCodeToBodyBottom()
+    {
+        $settings = new SystemSettings();
+        $bodyBottom = $settings->bodyBottom->getValue();
+        echo $bodyBottom;
     }
 
 }

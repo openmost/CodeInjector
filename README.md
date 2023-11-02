@@ -2,5 +2,5 @@
 
 ## Description
 
-Add code to your Matomo instance in a second
+Inject CSS and JS code to your Matomo instance using native Matomo hooks.
 

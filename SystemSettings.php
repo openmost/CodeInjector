@@ -8,9 +8,9 @@
 
 namespace Piwik\Plugins\CodeInjector;
 
+use Piwik\Piwik;
 use Piwik\Settings\Setting;
 use Piwik\Settings\FieldConfig;
-use Piwik\Validators\NotEmpty;
 
 /**
  * Defines Settings for CodeInjector.
@@ -28,14 +28,26 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     protected function init()
     {
         $this->bodyTop = $this->createBodyTopSettings();
+        $this->bodyBottom = $this->createBodyBottomSettings();
     }
 
     private function createBodyTopSettings()
     {
         return $this->makeSetting('bodyTop', '', FieldConfig::TYPE_STRING, function (FieldConfig $field) {
-            $field->title = 'Add code to Matomo';
+            $field->title = Piwik::translate('CodeInjector_BodyTopTitle');
             $field->uiControl = FieldConfig::UI_CONTROL_TEXTAREA;
-            $field->description = 'Add code to the <body> section of the page';
+            $field->uiControlAttributes = ['rows' => 10, 'style' => 'min-height: 250px !important; font-family: monospace;'];
+            $field->description = Piwik::translate('CodeInjector_BodyTopDescription');
+        });
+    }
+
+    private function createBodyBottomSettings()
+    {
+        return $this->makeSetting('bodyBottom', '', FieldConfig::TYPE_STRING, function (FieldConfig $field) {
+            $field->title = Piwik::translate('CodeInjector_BodyBottomTitle');
+            $field->uiControl = FieldConfig::UI_CONTROL_TEXTAREA;
+            $field->uiControlAttributes = ['rows' => 10, 'style' => 'min-height: 250px !important; font-family: monospace;'];
+            $field->description = Piwik::translate('CodeInjector_BodyBottomDescription');
         });
     }
 }

@@ -1,0 +1,8 @@
+{
+  "CodeInjector": {
+    "BodyTopTitle": "Ajouter du code en haut de la balise body dans toutes les pages",
+    "BodyTopDescription": "Ce code sera exécuté sur toutes les pages. Attention, une mauvaise utilisation peut casser votre instance.",
+    "BodyBottomTitle": "Ajouter du code au bas de la balise body dans toutes les pages",
+    "BodyBottomDescription": "Ce code sera exécuté sur toutes les pages. Attention, une mauvaise utilisation peut casser votre instance."
+  }
+}
