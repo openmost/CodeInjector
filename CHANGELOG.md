@@ -1,5 +1,9 @@
 ## Changelog
 
+### v4.0.5
+
+- Update FAQ (remove unnecessary API method)
+
 ### v4.0.4
 
 - Fix FAQ syntax

@@ -7,7 +7,6 @@ This plugin is available in the official marketplace of Matomo. You have to inst
 - Go to the administration panel
 - Look for the Marketplace section and select "Plugins" in the dropdown
 - Then search for "**CodeInjector**", install and activate the plugin.
-- Follow the documentation to install the API fetch method to get the data you want.
 
 __Is the plugin active for all Matomo users in my instance ?__
 
