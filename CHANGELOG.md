@@ -1,5 +1,9 @@
 ## Changelog
 
+### v4.0.6
+
+- Support Matomo v4.0.0 instead of 4.15.1
+
 ### v4.0.5
 
 - Update FAQ (remove unnecessary API method)
