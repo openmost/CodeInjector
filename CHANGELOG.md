@@ -1,5 +1,7 @@
 ## Changelog
 
+### v5.0.7
+
 ### v5.0.6
 
 - Support Matomo v5

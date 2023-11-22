@@ -24,6 +24,14 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
 {
     /** @var Setting */
     public $head;
+    /**
+     * @var \Piwik\Settings\Plugin\SystemSetting
+     */
+    protected $bodyTop;
+    /**
+     * @var \Piwik\Settings\Plugin\SystemSetting
+     */
+    private $bodyBottom;
 
     protected function init()
     {
