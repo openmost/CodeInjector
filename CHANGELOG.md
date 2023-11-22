@@ -1,5 +1,9 @@
 ## Changelog
 
+### v5.0.6
+
+- Support Matomo v5
+
 ### v4.0.6
 
 - Support Matomo v4.0.0 instead of 4.15.1
