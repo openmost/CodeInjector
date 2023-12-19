@@ -22,16 +22,12 @@ use Piwik\Settings\FieldConfig;
  */
 class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
 {
-    /** @var Setting */
-    public $head;
+
+    public $bodyTop;
     /**
      * @var \Piwik\Settings\Plugin\SystemSetting
      */
-    protected $bodyTop;
-    /**
-     * @var \Piwik\Settings\Plugin\SystemSetting
-     */
-    private $bodyBottom;
+    public $bodyBottom;
 
     protected function init()
     {
