@@ -1,5 +1,8 @@
 ## Changelog
 
+### v5.0.9
+- Update documentation
+
 ### v5.0.8
 
 - Fix compatibility with Matomo v5.0
