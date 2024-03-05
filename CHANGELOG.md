@@ -1,5 +1,9 @@
 ## Changelog
 
+### v4.0.8
+
+- update: Documentation URL
+
 ### v4.0.7
 
 - fix: SystemSettings property declaration
