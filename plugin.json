@@ -1,7 +1,7 @@
 {
     "name": "CodeInjector",
     "description": "Inject CSS and JS code to your Matomo instance",
-    "version": "5.0.9",
+    "version": "5.0.10",
     "theme": false,
     "require": {
         "matomo": ">=5.0.0-b1,<6.0.0-b1"
@@ -26,5 +26,6 @@
         "add",
         "head",
         "body"
-    ]
+    ],
+    "categories": "development"
 }

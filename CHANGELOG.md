@@ -1,13 +1,16 @@
 ## Changelog
 
+### v5.0.10
+
+- update: marketplace category and cover
+
 ### v5.0.9
+
 - Update documentation
 
 ### v5.0.8
 
 - Fix compatibility with Matomo v5.0
-
-### v5.0.7
 
 ### v5.0.6
 
