@@ -7,7 +7,10 @@
     "BodyBottomDescription": "Injected right before the closing body tag of every Matomo page, after the page content. Wrap your code in script or style tags. The code is not injected on this settings page, so a snippet breaking the interface can always be fixed here.",
     "JavaScriptSyntaxError": "JavaScript syntax error: %1$s",
     "JsonSyntaxError": "JSON syntax error: %1$s",
+    "CssSyntaxError": "CSS syntax error near %1$s (missing or extra brace, colon or semicolon?)",
+    "HtmlSyntaxError": "HTML syntax error near %1$s (invalid or mismatched tag?)",
     "UnclosedScriptTag": "This script tag is never closed, it would swallow the rest of the Matomo page.",
+    "UnclosedStyleTag": "This style tag is never closed, it would hide the rest of the Matomo page.",
     "MissingTags": "This code is not wrapped in a script or style tag, it will be displayed as text in every page.",
     "SyntaxValid": "Syntax valid",
     "SyntaxMayContainErrors": "Syntax may contain errors"

@@ -51,7 +51,10 @@ class CodeInjector extends \Piwik\Plugin
     {
         $translationKeys[] = 'CodeInjector_JavaScriptSyntaxError';
         $translationKeys[] = 'CodeInjector_JsonSyntaxError';
+        $translationKeys[] = 'CodeInjector_CssSyntaxError';
+        $translationKeys[] = 'CodeInjector_HtmlSyntaxError';
         $translationKeys[] = 'CodeInjector_UnclosedScriptTag';
+        $translationKeys[] = 'CodeInjector_UnclosedStyleTag';
         $translationKeys[] = 'CodeInjector_MissingTags';
         $translationKeys[] = 'CodeInjector_SyntaxValid';
         $translationKeys[] = 'CodeInjector_SyntaxMayContainErrors';

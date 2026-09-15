@@ -21,8 +21,17 @@ describe('lintCode', () => {
   });
 
   it('accepts valid JavaScript, CSS and HTML', () => {
-    const code = '<style>\n  .card { color: red; }\n</style>\n<div>Hello</div>\n<script>\n  var a = 1;\n</script>';
+    const code = '<style>\n  .card { border-radius: 12px; }\n</style>\n<div>Hello</div>\n<script>\n  var a = 1;\n</script>';
     expect(lintCode(code)).toEqual([]);
+  });
+
+  it('accepts modern CSS and loose HTML', () => {
+    const css = '<style>:root { --brand: #3450a3; }\n.a { width: clamp(1rem, 2vw, 3rem); &:hover { color: var(--brand); } }\n'
+      + '@supports (display: grid) { .a { display: grid; } }\n@layer base { :is(.a, .b) > .c::before { content: "x"; } }</style>';
+    const html = '<!-- comment --><p>one<p>two<ul><li>a<li>b</ul><input type=text disabled>'
+      + '<div style="margin: 0 auto"><svg viewBox="0 0 10 10"><path d="M0 0L10 10"/></svg></div>';
+    expect(lintCode(css)).toEqual([]);
+    expect(lintCode(html)).toEqual([]);
   });
 
   it('reports a JavaScript syntax error at its position in the document', () => {
@@ -43,18 +52,51 @@ describe('lintCode', () => {
 
   it('checks JSON-LD and ignores other script types', () => {
     expect(lintCode('<script type="application/ld+json">{"a": 1}</script>')).toEqual([]);
-    expect(lintCode('<script type="application/ld+json">{"a": }</script>')[0].message)
-      .toContain('CodeInjector_JsonSyntaxError');
-    expect(lintCode('<script type="text/template">{{ not js</script>')).toEqual([]);
+    const jsonDiagnostics = lintCode('<script type="application/ld+json">{"a": }</script>');
+    expect(jsonDiagnostics).toHaveLength(1);
+    expect(jsonDiagnostics[0].message).toContain('CodeInjector_JsonSyntaxError');
+    expect(lintCode('<script type="text/template">{{ not js <div> }}</script>')).toEqual([]);
   });
 
-  it('reports an unclosed script tag', () => {
-    const code = '<script>var a = 1;</script>\n<script src="https://example.com/a.js">';
+  it('reports a CSS rule missing its closing brace', () => {
+    const code = '<style>\nhtml {\n scrollbar-width: none;\n\n</style>';
     const diagnostics = lintCode(code);
 
     expect(diagnostics).toHaveLength(1);
-    expect(diagnostics[0].message).toContain('CodeInjector_UnclosedScriptTag');
-    expect(diagnostics[0].from).toBe(code.lastIndexOf('<script'));
+    expect(diagnostics[0].message).toContain('CodeInjector_CssSyntaxError');
+  });
+
+  it('reports an extra brace and a missing colon in CSS', () => {
+    const extraBrace = lintCode('<style>\nhtml {\n scrollbar-width: none;\n}}\n</style>');
+    const missingColon = lintCode('<style>\nhtml {\n scrollbar-width none;\n}\n</style>');
+
+    expect(extraBrace).toHaveLength(1);
+    expect(extraBrace[0].message).toContain('CodeInjector_CssSyntaxError');
+    expect(missingColon.length).toBeGreaterThan(0);
+    expect(missingColon[0].message).toContain('CodeInjector_CssSyntaxError');
+  });
+
+  it('reports a mismatched HTML closing tag', () => {
+    const code = '<div class="a">\n<span>test</div>';
+    const diagnostics = lintCode(code);
+
+    expect(diagnostics).toHaveLength(1);
+    expect(diagnostics[0].message).toContain('CodeInjector_HtmlSyntaxError');
+    expect(diagnostics[0].message).toContain('</div>');
+  });
+
+  it('reports unclosed script and style tags', () => {
+    const script = '<script>var a = 1;</script>\n<script src="https://example.com/a.js">';
+    const scriptDiagnostics = lintCode(script);
+    const style = '<style>\nhtml { top: 0; }\n';
+    const styleDiagnostics = lintCode(style);
+
+    expect(scriptDiagnostics).toHaveLength(1);
+    expect(scriptDiagnostics[0].message).toContain('CodeInjector_UnclosedScriptTag');
+    expect(scriptDiagnostics[0].from).toBe(script.lastIndexOf('<script'));
+    expect(styleDiagnostics).toHaveLength(1);
+    expect(styleDiagnostics[0].message).toContain('CodeInjector_UnclosedStyleTag');
+    expect(styleDiagnostics[0].from).toBe(0);
   });
 
   it('warns when the code is not wrapped in tags', () => {

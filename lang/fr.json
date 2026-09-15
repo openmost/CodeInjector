@@ -7,7 +7,10 @@
     "BodyBottomDescription": "Injecté juste avant la fermeture de la balise body de chaque page de Matomo, après le contenu de la page. Placez votre code dans des balises script ou style. Le code n'est pas injecté sur cette page de réglages, un code qui casse l'interface peut donc toujours être corrigé ici.",
     "JavaScriptSyntaxError": "Erreur de syntaxe JavaScript : %1$s",
     "JsonSyntaxError": "Erreur de syntaxe JSON : %1$s",
+    "CssSyntaxError": "Erreur de syntaxe CSS près de %1$s (accolade, deux-points ou point-virgule manquant ou en trop ?)",
+    "HtmlSyntaxError": "Erreur de syntaxe HTML près de %1$s (balise invalide ou mal fermée ?)",
     "UnclosedScriptTag": "Cette balise script n'est jamais fermée, elle avalerait le reste de la page Matomo.",
+    "UnclosedStyleTag": "Cette balise style n'est jamais fermée, elle masquerait le reste de la page Matomo.",
     "MissingTags": "Ce code n'est pas placé dans une balise script ou style, il sera affiché comme du texte sur chaque page.",
     "SyntaxValid": "Syntaxe valide",
     "SyntaxMayContainErrors": "La syntaxe peut contenir des erreurs"

@@ -34,9 +34,11 @@ Your code must be wrapped in the right tags, for example:
 
 Each field is a code editor with HTML, CSS and JavaScript syntax highlighting. While you type, the editor checks your code and shows a status next to the field title:
 
+- HTML syntax errors, like a closing tag that does not match its opening tag
+- CSS syntax errors in `<style>` tags, like a missing or extra brace
 - JavaScript syntax errors in `<script>` tags
 - JSON syntax errors in `<script type="application/ld+json">` tags
-- `<script>` tags that are never closed
+- `<script>` and `<style>` tags that are never closed
 - Code pasted without any `<script>` or `<style>` tag, which would be displayed as text
 
 Click the status to list the problems. These checks never block saving.

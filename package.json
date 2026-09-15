@@ -4,6 +4,7 @@
   "description": "Build dependencies of the CodeInjector Vue library (code editor)",
   "dependencies": {
     "@codemirror/lang-html": "^6.4.12",
+    "@codemirror/language": "^6.11.0",
     "@codemirror/lint": "^6.9.7",
     "@codemirror/state": "^6.7.5",
     "@codemirror/theme-one-dark": "^6.1.3",

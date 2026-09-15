@@ -6,7 +6,7 @@ Inject HTML, CSS and JavaScript code in every page of your Matomo instance, usin
 
 - Two code areas: at the top and at the bottom of the `<body>` tag
 - Code editor with HTML, CSS and JavaScript syntax highlighting
-- Live checks: JavaScript and JSON-LD syntax errors, unclosed `<script>` tags, code pasted without tags
+- Live checks: HTML, CSS, JavaScript and JSON-LD syntax errors, unclosed `<script>` and `<style>` tags, code pasted without tags
 - Safe by design: the code is never injected on the settings page, so a snippet breaking the interface can always be fixed
 
 ## Requirements
