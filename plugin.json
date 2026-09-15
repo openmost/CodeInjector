@@ -1,7 +1,7 @@
 {
     "name": "CodeInjector",
     "description": "Inject HTML, CSS and JavaScript code in every page of your Matomo instance, with a code editor and syntax validation",
-    "version": "6.0.0",
+    "version": "6.0.1",
     "theme": false,
     "require": {
         "php": ">=8.1.0",
