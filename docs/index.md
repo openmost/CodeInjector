@@ -1,24 +1,52 @@
 ## Documentation
 
-This plugin add two `textarea` fields where you can paste your code.
+This plugin adds two code editors in **Administration > System > General settings > Code Injector**, where you can paste your HTML, CSS and JavaScript code.
 
-### Use case
+### Use cases
 
-- Add CSS to customize your UI without theming
-- Add CSS to fix small issues
-- Add JS to enhance experience
-- Add JS to put a custom tracker in Matomo UI
-- Add external JS libraries to Matomo
-- Possibilities are limitless.
+- Add CSS to customize your UI without creating a theme
+- Add CSS to fix small display issues
+- Add JavaScript to enhance the user experience
+- Add a tracking code to measure how your team uses Matomo
+- Add a chat or support widget
+- Load external JavaScript libraries in Matomo
 
-### To paste your code in the right place use use the native Matomo hooks :
+### Where the code is injected
 
-- `bodyTop` hook is the first line in `<body>`
-- `bodyBottom` hook is the last line in `<body>`
+The code is injected in every page of the Matomo interface (reporting, dashboard, administration, Tag Manager, login page) using the native Matomo hooks:
+
+- `Template.bodyTop`: right after the opening `<body>` tag, before the page content
+- `Template.bodyBottom`: right before the closing `</body>` tag, after the page content
+
+Your code must be wrapped in the right tags, for example:
+
+```html
+<style>
+  .card { border-radius: 12px; }
+</style>
+
+<script>
+  console.log('Hello from Code Injector');
+</script>
+```
+
+### Code editor
+
+Each field is a code editor with HTML, CSS and JavaScript syntax highlighting. While you type, the editor checks your code and shows a status next to the field title:
+
+- JavaScript syntax errors in `<script>` tags
+- JSON syntax errors in `<script type="application/ld+json">` tags
+- `<script>` tags that are never closed
+- Code pasted without any `<script>` or `<style>` tag, which would be displayed as text
+
+Click the status to list the problems. These checks never block saving.
+
+### Safe mode on the settings page
+
+The code is never injected on the General settings page. If a snippet breaks the Matomo interface, go back to the settings page to fix or remove it.
 
 ### Warning
 
+Only super users can edit this code, and it runs for every user of your Matomo instance.
 
-The code you add in these areas will be automatically added to all pages of your Matomo instance.
-
-<u style="color: red"> Don't copy code you don't understand. </u>
+**Don't paste code you don't understand.**

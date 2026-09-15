@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -6,52 +7,41 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
+declare(strict_types=1);
+
 namespace Piwik\Plugins\CodeInjector;
 
 use Piwik\Piwik;
-use Piwik\Settings\Setting;
 use Piwik\Settings\FieldConfig;
+use Piwik\Settings\Plugin\SystemSetting;
 
 /**
- * Defines Settings for CodeInjector.
- *
- * Usage like this:
- * $settings = new SystemSettings();
- * $settings->metric->getValue();
- * $settings->description->getValue();
+ * Code injected in every page of the Matomo UI, editable by super users only.
  */
 class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
 {
+    private const CODE_EDITOR_COMPONENT = ['plugin' => 'CodeInjector', 'name' => 'FieldCodeEditor'];
 
+    /** @var SystemSetting */
     public $bodyTop;
-    /**
-     * @var \Piwik\Settings\Plugin\SystemSetting
-     */
+
+    /** @var SystemSetting */
     public $bodyBottom;
 
     protected function init()
     {
-        $this->bodyTop = $this->createBodyTopSettings();
-        $this->bodyBottom = $this->createBodyBottomSettings();
+        $this->bodyTop = $this->createCodeSetting('bodyTop', 'CodeInjector_BodyTopTitle', 'CodeInjector_BodyTopDescription');
+        $this->bodyBottom = $this->createCodeSetting('bodyBottom', 'CodeInjector_BodyBottomTitle', 'CodeInjector_BodyBottomDescription');
     }
 
-    private function createBodyTopSettings()
+    private function createCodeSetting(string $name, string $titleKey, string $descriptionKey): SystemSetting
     {
-        return $this->makeSetting('bodyTop', '', FieldConfig::TYPE_STRING, function (FieldConfig $field) {
-            $field->title = Piwik::translate('CodeInjector_BodyTopTitle');
+        return $this->makeSetting($name, '', FieldConfig::TYPE_STRING, function (FieldConfig $field) use ($titleKey, $descriptionKey) {
+            $field->title = Piwik::translate($titleKey);
+            $field->description = Piwik::translate($descriptionKey);
             $field->uiControl = FieldConfig::UI_CONTROL_TEXTAREA;
-            $field->uiControlAttributes = ['rows' => 10, 'style' => 'min-height: 250px !important; font-family: monospace;'];
-            $field->description = Piwik::translate('CodeInjector_BodyTopDescription');
-        });
-    }
-
-    private function createBodyBottomSettings()
-    {
-        return $this->makeSetting('bodyBottom', '', FieldConfig::TYPE_STRING, function (FieldConfig $field) {
-            $field->title = Piwik::translate('CodeInjector_BodyBottomTitle');
-            $field->uiControl = FieldConfig::UI_CONTROL_TEXTAREA;
-            $field->uiControlAttributes = ['rows' => 10, 'style' => 'min-height: 250px !important; font-family: monospace;'];
-            $field->description = Piwik::translate('CodeInjector_BodyBottomDescription');
+            $field->customFieldComponent = self::CODE_EDITOR_COMPONENT;
+            $field->fullWidth = true;
         });
     }
 }

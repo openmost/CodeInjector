@@ -1,9 +1,15 @@
 {
   "CodeInjector": {
-    "CodeInjector" : "Code Injector",
-    "BodyTopTitle": "Add code at the top of body tag in all pages",
-    "BodyTopDescription": "This code will be executed on all pages. Be careful, bad usage can break your instance.",
-    "BodyBottomTitle": "Add code at the bottom of body tag in all pages",
-    "BodyBottomDescription": "This code will be executed on all pages. Be careful, bad usage can break your instance."
+    "CodeInjector": "Code Injector",
+    "BodyTopTitle": "Code at the top of the body tag",
+    "BodyTopDescription": "Injected right after the opening body tag of every Matomo page, before the page content. Wrap your code in script or style tags. The code is not injected on this settings page, so a snippet breaking the interface can always be fixed here.",
+    "BodyBottomTitle": "Code at the bottom of the body tag",
+    "BodyBottomDescription": "Injected right before the closing body tag of every Matomo page, after the page content. Wrap your code in script or style tags. The code is not injected on this settings page, so a snippet breaking the interface can always be fixed here.",
+    "JavaScriptSyntaxError": "JavaScript syntax error: %1$s",
+    "JsonSyntaxError": "JSON syntax error: %1$s",
+    "UnclosedScriptTag": "This script tag is never closed, it would swallow the rest of the Matomo page.",
+    "MissingTags": "This code is not wrapped in a script or style tag, it will be displayed as text in every page.",
+    "SyntaxValid": "Syntax valid",
+    "SyntaxMayContainErrors": "Syntax may contain errors"
   }
 }

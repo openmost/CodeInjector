@@ -1,9 +1,15 @@
 {
   "CodeInjector": {
-    "CodeInjector" : "Code Injector",
-    "BodyTopTitle": "Ajouter du code en haut de la balise body dans toutes les pages",
-    "BodyTopDescription": "Ce code sera exécuté sur toutes les pages. Attention, une mauvaise utilisation peut casser votre instance.",
-    "BodyBottomTitle": "Ajouter du code au bas de la balise body dans toutes les pages",
-    "BodyBottomDescription": "Ce code sera exécuté sur toutes les pages. Attention, une mauvaise utilisation peut casser votre instance."
+    "CodeInjector": "Code Injector",
+    "BodyTopTitle": "Code en haut de la balise body",
+    "BodyTopDescription": "Injecté juste après l'ouverture de la balise body de chaque page de Matomo, avant le contenu de la page. Placez votre code dans des balises script ou style. Le code n'est pas injecté sur cette page de réglages, un code qui casse l'interface peut donc toujours être corrigé ici.",
+    "BodyBottomTitle": "Code en bas de la balise body",
+    "BodyBottomDescription": "Injecté juste avant la fermeture de la balise body de chaque page de Matomo, après le contenu de la page. Placez votre code dans des balises script ou style. Le code n'est pas injecté sur cette page de réglages, un code qui casse l'interface peut donc toujours être corrigé ici.",
+    "JavaScriptSyntaxError": "Erreur de syntaxe JavaScript : %1$s",
+    "JsonSyntaxError": "Erreur de syntaxe JSON : %1$s",
+    "UnclosedScriptTag": "Cette balise script n'est jamais fermée, elle avalerait le reste de la page Matomo.",
+    "MissingTags": "Ce code n'est pas placé dans une balise script ou style, il sera affiché comme du texte sur chaque page.",
+    "SyntaxValid": "Syntaxe valide",
+    "SyntaxMayContainErrors": "La syntaxe peut contenir des erreurs"
   }
 }

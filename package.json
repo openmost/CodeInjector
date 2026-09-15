@@ -1,0 +1,22 @@
+{
+  "name": "code-injector",
+  "private": true,
+  "description": "Build dependencies of the CodeInjector Vue library (code editor)",
+  "dependencies": {
+    "@codemirror/lang-html": "^6.4.12",
+    "@codemirror/lint": "^6.9.7",
+    "@codemirror/state": "^6.7.5",
+    "@codemirror/theme-one-dark": "^6.1.3",
+    "@codemirror/view": "^6.43.12",
+    "acorn": "^8.18.0",
+    "codemirror": "^6.0.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  }
+}
