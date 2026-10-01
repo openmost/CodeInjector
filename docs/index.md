@@ -1,6 +1,6 @@
 ## Documentation
 
-This plugin adds two code editors in **Administration > System > General settings > Code Injector**, where you can paste your HTML, CSS and JavaScript code.
+This plugin adds two code editors in **Administration > System > Code Injector**, where you can paste your HTML, CSS and JavaScript code.
 
 ### Use cases
 
@@ -32,7 +32,7 @@ Your code must be wrapped in the right tags, for example:
 
 ### Code editor
 
-Each field is a code editor with HTML, CSS and JavaScript syntax highlighting. While you type, the editor checks your code and shows a status next to the field title:
+Each field is a code editor with HTML, CSS and JavaScript syntax highlighting, in a light or dark palette that follows the Matomo theme. While you type, the editor checks your code and shows a status next to the field title:
 
 - HTML syntax errors, like a closing tag that does not match its opening tag
 - CSS syntax errors in `<style>` tags, like a missing or extra brace
@@ -43,9 +43,9 @@ Each field is a code editor with HTML, CSS and JavaScript syntax highlighting. W
 
 Click the status to list the problems. These checks never block saving.
 
-### Safe mode on the settings page
+### Safe mode on the Code Injector page
 
-The code is never injected on the General settings page. If a snippet breaks the Matomo interface, go back to the settings page to fix or remove it.
+The code is never injected on the Code Injector page. If a snippet breaks the Matomo interface, go back to this page to fix or remove it.
 
 ### Warning
 

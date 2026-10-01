@@ -10,7 +10,7 @@ This plugin is available in the official Matomo Marketplace. Install it the same
 
 __Where do I paste my code?__
 
-Go to **Administration > System > General settings** and scroll to the **Code Injector** section.
+Go to **Administration > System > Code Injector**.
 
 __Who can edit the injected code?__
 
@@ -22,7 +22,7 @@ Your code is not wrapped in tags. Put your CSS in a `<style>` tag and your JavaS
 
 __My code broke the Matomo interface, how do I fix it?__
 
-The code is never injected on the General settings page: open **Administration > System > General settings** (`index.php?module=CoreAdminHome&action=generalSettings`) and fix or remove your code.
+The code is never injected on the Code Injector page: open **Administration > System > Code Injector** (`index.php?module=CodeInjector&action=index`) and fix or remove your code.
 
 __Is my code injected in the tracked websites?__
 

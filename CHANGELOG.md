@@ -1,5 +1,14 @@
 ## Changelog
 
+### v6.1.0
+
+- The code is edited on a dedicated **Administration > System > Code Injector** page instead of the General settings, existing code is kept
+- New `CodeInjector.getCode` and `CodeInjector.setCode` API methods (super user only, saving requires the password confirmation)
+- The code editor uses a light and dark palette that follows the Matomo theme
+- More reliable syntax checks: `<script>` and `<style>` tags are located with the HTML syntax tree, tags inside comments or strings are ignored
+- Interface translated into 12 languages
+- Shorter Marketplace description that fits the plugin cards, and campaign parameters on the Openmost links of the README.
+
 ### v6.0.1
 
 - Remove the `strict_types` declaration from the main plugin file, which the Marketplace syntax check rejects

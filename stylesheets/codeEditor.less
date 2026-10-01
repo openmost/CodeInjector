@@ -1,5 +1,7 @@
-// Code editor of the settings (CodeMirror, see vue/src/CodeEditor/FieldCodeEditor.vue)
-.matomo-form-field .ci-code-field-header {
+@import "codeTheme.less";
+
+// Code editor of the Code Injector admin page (CodeMirror, see vue/src/CodeEditor/FieldCodeEditor.vue)
+.ci-code-field .ci-code-field-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -7,14 +9,21 @@
   margin-bottom: .5rem;
 }
 
-// the materialize label floats over its input, the editor has no placeholder to float over
-.matomo-form-field .input-field .ci-code-field-label {
-  position: static;
-  transform: none;
+.ci-code-field .ci-code-field-label {
   font-size: 1rem;
+  font-weight: 500;
 }
 
-.matomo-form-field .ci-code-editor {
+.ci-code-field {
+  margin-bottom: 2rem;
+}
+
+.ci-code-field .ci-code-field-help {
+  margin-top: 1rem;
+  color: @theme-color-text-lighter;
+}
+
+.ci-code-field .ci-code-editor {
   min-height: 250px;
   max-height: 600px;
   border-radius: .5rem;
@@ -23,7 +32,6 @@
 
   .cm-scroller {
     min-height: 250px;
-    font-family: monospace;
   }
 
   &.cm-focused {
@@ -41,12 +49,12 @@
   }
 
   .cm-lint-marker-error {
-    background-color: @theme-color-base-series;
+    background-color: var(--om-code-error);
   }
 }
 
 // syntax status displayed next to the field label
-.matomo-form-field .ci-code-status {
+.ci-code-field .ci-code-status {
   display: inline-flex;
   align-items: center;
   gap: 4px;

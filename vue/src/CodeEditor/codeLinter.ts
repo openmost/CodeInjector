@@ -18,13 +18,16 @@ import { translate } from 'CoreHome';
 // - HTML and CSS syntax with the error nodes of the editor syntax tree (Lezer)
 // - unclosed <script> and <style> tags, code pasted without any tag
 // Problems are only reported in the editor: saving is not blocked.
+//
+// <script> and <style> elements are located with the HTML syntax tree, not with regular
+// expressions: a tag written in a comment, a string or a stylesheet is not an element, and an
+// attribute value may contain ">".
 
-const SCRIPT_PATTERN = /<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi;
-const STYLE_PATTERN = /<style\b[^>]*>[\s\S]*?<\/style\s*>/gi;
 const TAG_PATTERN = /<[a-z!/]/i;
-const TYPE_ATTRIBUTE_PATTERN = /\btype\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i;
 const JSON_POSITION_PATTERN = /position (\d+)/;
 const SNIPPET_PATTERN = /^\S{1,30}/;
+const QUOTES_PATTERN = /^(["'])([\s\S]*)\1$/;
+const RAW_TEXT_CLOSING_TAG_PATTERN = /<\/(?:script|style)(?=[\s/>])/gi;
 
 const JAVASCRIPT_TYPES = [
   '',
@@ -51,10 +54,19 @@ interface Range {
   to: number;
 }
 
-function getScriptType(attributes: string): string {
-  const match = attributes.match(TYPE_ATTRIBUTE_PATTERN);
-  const type = match ? (match[1] ?? match[2] ?? match[3] ?? '') : '';
-  return type.trim().toLowerCase();
+interface TreeNode {
+  from: number;
+  to: number;
+  getChild(type: string): TreeNode | null;
+  getChildren(type: string): TreeNode[];
+}
+
+interface RawTextElement {
+  tagName: 'script' | 'style';
+  type: string;
+  openTag: Range;
+  content: Range;
+  isClosed: boolean;
 }
 
 function makeDiagnostic(
@@ -71,40 +83,63 @@ function makeDiagnostic(
   };
 }
 
-function findElements(code: string, pattern: RegExp): Range[] {
-  const ranges: Range[] = [];
-
-  pattern.lastIndex = 0;
-  let match = pattern.exec(code);
-  while (match) {
-    ranges.push({ from: match.index, to: match.index + match[0].length });
-    match = pattern.exec(code);
-  }
-
-  return ranges;
-}
-
+// error nodes at the very end of a block (eg a missing brace) start at its last position
 function isInRanges(position: number, ranges: Range[]): boolean {
-  return ranges.some((range) => position >= range.from && position < range.to);
+  return ranges.some((range) => position >= range.from && position <= range.to);
 }
 
-// an unclosed <script> or <style> makes the browser read the rest of the Matomo page as its content
-function findUnclosedTag(code: string, tagName: string): Range | null {
-  const openingPattern = new RegExp(`<${tagName}\\b[^>]*>`, 'gi');
-  const closingPattern = new RegExp(`<\\/${tagName}\\s*>`, 'i');
-
-  let match = openingPattern.exec(code);
-  while (match) {
-    const contentStart = match.index + match[0].length;
-    const closing = code.slice(contentStart).search(closingPattern);
-    if (closing === -1) {
-      return { from: match.index, to: contentStart };
-    }
-    openingPattern.lastIndex = contentStart + closing;
-    match = openingPattern.exec(code);
+function getTypeAttribute(code: string, openTag: TreeNode): string {
+  const typeAttribute = openTag.getChildren('Attribute').find((attribute) => {
+    const name = attribute.getChild('AttributeName');
+    return name && code.slice(name.from, name.to).toLowerCase() === 'type';
+  });
+  const value = typeAttribute && (
+    typeAttribute.getChild('AttributeValue') || typeAttribute.getChild('UnquotedAttributeValue')
+  );
+  if (!value) {
+    return '';
   }
+  return code.slice(value.from, value.to).replace(QUOTES_PATTERN, '$2').trim().toLowerCase();
+}
 
-  return null;
+function findRawTextElements(
+  code: string,
+  tree: NonNullable<ReturnType<typeof ensureSyntaxTree>>,
+): RawTextElement[] {
+  const elements: RawTextElement[] = [];
+
+  tree.iterate({
+    enter: (nodeRef) => {
+      if (nodeRef.name !== 'Element') {
+        return undefined;
+      }
+      const element: TreeNode = nodeRef.node;
+      const openTag = element.getChild('OpenTag');
+      const tagNameNode = openTag && openTag.getChild('TagName');
+      if (!openTag || !tagNameNode) {
+        return undefined;
+      }
+
+      const tagName = code.slice(tagNameNode.from, tagNameNode.to).toLowerCase();
+      if (tagName !== 'script' && tagName !== 'style') {
+        return undefined;
+      }
+
+      const closeTag = element.getChild('CloseTag');
+      elements.push({
+        tagName,
+        type: getTypeAttribute(code, openTag),
+        openTag: { from: openTag.from, to: openTag.to },
+        content: { from: openTag.to, to: closeTag ? closeTag.from : nodeRef.to },
+        isClosed: !!closeTag,
+      });
+
+      // the content is raw text (or a nested JavaScript / CSS tree), it holds no element
+      return false;
+    },
+  });
+
+  return elements;
 }
 
 function lintJavaScript(code: string, offset: number, isModule: boolean): Diagnostic | null {
@@ -150,77 +185,27 @@ function lintJson(code: string, offset: number): Diagnostic | null {
   }
 }
 
-function lintScripts(code: string): Diagnostic[] {
-  const diagnostics: Diagnostic[] = [];
-
-  SCRIPT_PATTERN.lastIndex = 0;
-  let match = SCRIPT_PATTERN.exec(code);
-  while (match) {
-    const [whole, attributes, script] = match;
-    const scriptOffset = match.index + whole.indexOf('>') + 1;
-    const type = getScriptType(attributes);
-
-    let diagnostic: Diagnostic | null = null;
-    if (JAVASCRIPT_TYPES.includes(type)) {
-      diagnostic = lintJavaScript(script, scriptOffset, type === 'module');
-    } else if (JSON_TYPES.includes(type)) {
-      diagnostic = lintJson(script, scriptOffset);
-    }
-
-    if (diagnostic) {
-      diagnostics.push(diagnostic);
-    }
-    match = SCRIPT_PATTERN.exec(code);
+function lintScript(code: string, element: RawTextElement): Diagnostic | null {
+  const { from, to } = element.content;
+  if (JAVASCRIPT_TYPES.includes(element.type)) {
+    return lintJavaScript(code.slice(from, to), from, element.type === 'module');
   }
+  if (JSON_TYPES.includes(element.type)) {
+    return lintJson(code.slice(from, to), from);
+  }
+  return null;
+}
 
-  return diagnostics;
+// browsers close <script> and <style> elements whatever the case of the closing tag, the syntax
+// tree only with a lowercase one (same length, positions are kept)
+function lowercaseClosingTags(code: string): string {
+  return code.replace(RAW_TEXT_CLOSING_TAG_PATTERN, (tag) => tag.toLowerCase());
 }
 
 // the code around an error, eg "</div>" for a mismatched closing tag
 function getSnippet(code: string, position: number): string {
   const match = code.slice(position).trimStart().match(SNIPPET_PATTERN);
   return match ? `"${match[0]}"` : '';
-}
-
-// HTML and CSS errors found by the parser of the editor (the error nodes of the syntax tree).
-// Errors inside <script> elements are left to acorn and JSON.parse, which give better messages.
-function lintSyntaxTree(code: string, scriptRanges: Range[], styleRanges: Range[]): Diagnostic[] {
-  const state = EditorState.create({ doc: code, extensions: [htmlSupport] });
-  const tree = ensureSyntaxTree(state, code.length, SYNTAX_TREE_TIMEOUT);
-  if (!tree) {
-    return [];
-  }
-
-  const diagnostics: Diagnostic[] = [];
-  const reportedLines = new Set<number>();
-
-  tree.iterate({
-    enter: (node) => {
-      if (!node.type.isError || diagnostics.length >= MAX_SYNTAX_DIAGNOSTICS
-        || isInRanges(node.from, scriptRanges)) {
-        return;
-      }
-
-      // the parser often flags several nodes for a single mistake, report one error per line
-      const from = Math.max(Math.min(node.from, code.length - 1), 0);
-      const line = state.doc.lineAt(from).number;
-      if (reportedLines.has(line)) {
-        return;
-      }
-      reportedLines.add(line);
-
-      const messageKey = isInRanges(from, styleRanges)
-        ? 'CodeInjector_CssSyntaxError'
-        : 'CodeInjector_HtmlSyntaxError';
-      diagnostics.push(makeDiagnostic(
-        from,
-        Math.min(Math.max(node.to, from + 1), code.length),
-        translate(messageKey, getSnippet(code, from)),
-      ));
-    },
-  });
-
-  return diagnostics;
 }
 
 export function lintCode(code: string): Diagnostic[] {
@@ -235,35 +220,74 @@ export function lintCode(code: string): Diagnostic[] {
     return [makeDiagnostic(from, from + trimmed.length, translate('CodeInjector_MissingTags'), 'warning')];
   }
 
+  const state = EditorState.create({ doc: lowercaseClosingTags(code), extensions: [htmlSupport] });
+  const tree = ensureSyntaxTree(state, code.length, SYNTAX_TREE_TIMEOUT);
+  if (!tree) {
+    return [];
+  }
+
+  const elements = findRawTextElements(code, tree);
+  const scripts = elements.filter((element) => element.tagName === 'script');
+  const styles = elements.filter((element) => element.tagName === 'style');
+
   const diagnostics: Diagnostic[] = [];
-  const scriptRanges = findElements(code, SCRIPT_PATTERN);
-  const styleRanges = findElements(code, STYLE_PATTERN);
 
-  const unclosedScript = findUnclosedTag(code, 'script');
-  if (unclosedScript) {
-    diagnostics.push(makeDiagnostic(
-      unclosedScript.from,
-      unclosedScript.to,
-      translate('CodeInjector_UnclosedScriptTag'),
-    ));
-    scriptRanges.push({ from: unclosedScript.from, to: code.length });
-  }
+  // an unclosed <script> or <style> makes the browser read the rest of the Matomo page as its
+  // content
+  elements.forEach((element) => {
+    if (!element.isClosed) {
+      diagnostics.push(makeDiagnostic(
+        element.openTag.from,
+        element.openTag.to,
+        translate(element.tagName === 'script'
+          ? 'CodeInjector_UnclosedScriptTag'
+          : 'CodeInjector_UnclosedStyleTag'),
+      ));
+    }
+  });
 
-  const unclosedStyle = findUnclosedTag(code, 'style');
-  if (unclosedStyle) {
-    diagnostics.push(makeDiagnostic(
-      unclosedStyle.from,
-      unclosedStyle.to,
-      translate('CodeInjector_UnclosedStyleTag'),
-    ));
-    styleRanges.push({ from: unclosedStyle.from, to: code.length });
-  }
+  scripts.forEach((script) => {
+    const diagnostic = script.isClosed ? lintScript(code, script) : null;
+    if (diagnostic) {
+      diagnostics.push(diagnostic);
+    }
+  });
 
-  return [
-    ...diagnostics,
-    ...lintScripts(code),
-    ...lintSyntaxTree(code, scriptRanges, styleRanges),
-  ];
+  // HTML and CSS errors found by the parser of the editor (the error nodes of the syntax tree).
+  // Errors inside <script> elements are left to acorn and JSON.parse, which give better messages.
+  const scriptRanges = scripts.map((script) => script.content);
+  const styleRanges = styles.map((style) => style.content);
+  const reportedLines = new Set<number>();
+  let syntaxDiagnosticCount = 0;
+
+  tree.iterate({
+    enter: (node) => {
+      if (!node.type.isError || syntaxDiagnosticCount >= MAX_SYNTAX_DIAGNOSTICS
+        || isInRanges(node.from, scriptRanges)) {
+        return;
+      }
+
+      // the parser often flags several nodes for a single mistake, report one error per line
+      const from = Math.max(Math.min(node.from, code.length - 1), 0);
+      const line = state.doc.lineAt(from).number;
+      if (reportedLines.has(line)) {
+        return;
+      }
+      reportedLines.add(line);
+      syntaxDiagnosticCount += 1;
+
+      const messageKey = isInRanges(node.from, styleRanges)
+        ? 'CodeInjector_CssSyntaxError'
+        : 'CodeInjector_HtmlSyntaxError';
+      diagnostics.push(makeDiagnostic(
+        from,
+        Math.min(Math.max(node.to, from + 1), code.length),
+        translate(messageKey, getSnippet(code, from)),
+      ));
+    },
+  });
+
+  return diagnostics;
 }
 
 export function createCodeLinter(onResult: (diagnostics: Diagnostic[]) => void) {

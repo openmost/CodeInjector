@@ -1,7 +1,7 @@
 {
     "name": "CodeInjector",
-    "description": "Inject HTML, CSS and JavaScript code in every page of your Matomo instance, with a code editor and syntax validation",
-    "version": "6.0.1",
+    "description": "Inject your own HTML, CSS and JavaScript into every Matomo page, with a syntax-checking code editor.",
+    "version": "6.1.0",
     "theme": false,
     "require": {
         "php": ">=8.1.0",
@@ -20,6 +20,9 @@
         "source": "https://github.com/openmost/CodeInjector"
     },
     "homepage": "https://openmost.com/matomo/extensions/code-injector",
+    "preview": {
+        "video_url": "https://www.youtube-nocookie.com/embed/RmB6fFVY2xo"
+    },
     "license": "GPL v3+",
     "keywords": [
         "code",
@@ -27,11 +30,11 @@
         "inject",
         "head",
         "body",
-        "CSS",
-        "JavaScript",
-        "HTML",
-        "code editor",
+        "css",
+        "javascript",
+        "html",
+        "code-editor",
         "customization"
     ],
-    "categories": "development"
+    "category": "customisation"
 }

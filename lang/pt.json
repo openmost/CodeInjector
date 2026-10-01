@@ -1,0 +1,32 @@
+{
+  "CodeInjector": {
+    "CodeInjector": "Code Injector",
+    "PageIntro": "Injete HTML, CSS ou JavaScript em todas as páginas da interface do Matomo, para todos os utilizadores. Apenas os superutilizadores podem editar este código.",
+    "SaveSuccess": "O código foi guardado.",
+    "BodyTopTitle": "Código no início da tag body",
+    "BodyTopDescription": "Injetado logo após a tag body de abertura de todas as páginas do Matomo, antes do conteúdo da página. Envolva o seu código em tags script ou style.",
+    "BodyBottomTitle": "Código no fim da tag body",
+    "BodyBottomDescription": "Injetado logo antes da tag body de fecho de todas as páginas do Matomo, após o conteúdo da página. Envolva o seu código em tags script ou style.",
+    "SafeModeNotice": "O código não é injetado nesta página, pelo que um excerto que danifique a interface pode sempre ser corrigido aqui.",
+    "JavaScriptSyntaxError": "Erro de sintaxe JavaScript: %1$s",
+    "JsonSyntaxError": "Erro de sintaxe JSON: %1$s",
+    "CssSyntaxError": "Erro de sintaxe CSS perto de %1$s (chaveta, dois pontos ou ponto e vírgula em falta ou a mais?)",
+    "HtmlSyntaxError": "Erro de sintaxe HTML perto de %1$s (tag inválida ou sem correspondência?)",
+    "UnclosedScriptTag": "Esta tag script nunca é fechada, iria engolir o resto da página do Matomo.",
+    "UnclosedStyleTag": "Esta tag style nunca é fechada, iria ocultar o resto da página do Matomo.",
+    "MissingTags": "Este código não está envolvido numa tag script ou style, será apresentado como texto em todas as páginas.",
+    "SyntaxValid": "Sintaxe válida",
+    "SyntaxMayContainErrors": "A sintaxe pode conter erros"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "Dispensar",
+    "WidgetName": "Openmost: configuração do seguimento de chatbots de IA",
+    "AIChatbotsTitle": "Precisa de ajuda para configurar o seguimento de chatbots de IA?",
+    "AIChatbotsBody": "Como Implementation Partner oficial da Matomo, a Openmost pode configurar o seguimento de chatbots de IA por si, no Matomo On-Premise ou Cloud.",
+    "AIChatbotsCta": "Pedir a configuração",
+    "TrackingPlanTitle": "Os eventos têm de ser configurados manualmente",
+    "TrackingPlanBody": "Os eventos medem cliques, transferências, envios de formulários ou reproduções de vídeo, desde que sejam seguidos. Como Implementation Partner oficial da Matomo, a Openmost concebe e implementa um plano de marcação adaptado ao seu site.",
+    "TrackingPlanCta": "Criar o meu plano de marcação",
+    "EventsEnhancedLink": "Tire mais partido dos seus eventos com o Events Enhanced"
+  }
+}

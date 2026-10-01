@@ -58,6 +58,32 @@ describe('lintCode', () => {
     expect(lintCode('<script type="text/template">{{ not js <div> }}</script>')).toEqual([]);
   });
 
+  it('only checks real script elements', () => {
+    expect(lintCode('<!-- <script> -->\n<script>var a = 1;</script>')).toEqual([]);
+    expect(lintCode('<!-- disabled: <script>old(</script> -->')).toEqual([]);
+    expect(lintCode('<script>var css = \'<style>.a { color: red; }\';</script>')).toEqual([]);
+    expect(lintCode('<style>.a::after { content: "<script>"; }</style>')).toEqual([]);
+  });
+
+  it('reads the script content after an opening tag containing ">"', () => {
+    const code = '<script src="a.js" onload="if (a > b) run()">var ok = 1;</script>';
+    expect(lintCode(code)).toEqual([]);
+
+    const broken = '<script data-a="x>y">var a = ;</script>';
+    const [diagnostic] = lintCode(broken);
+    expect(diagnostic.message).toContain('CodeInjector_JavaScriptSyntaxError');
+    expect(broken.substring(diagnostic.from, diagnostic.from + 1)).toBe(';');
+  });
+
+  it('reads the type attribute only', () => {
+    const diagnostics = lintCode('<script data-type="text/plain">var a = ;</script>');
+
+    expect(diagnostics).toHaveLength(1);
+    expect(diagnostics[0].message).toContain('CodeInjector_JavaScriptSyntaxError');
+    expect(lintCode('<SCRIPT TYPE=text/template>{{ not js }}</SCRIPT>')).toEqual([]);
+    expect(lintCode('<SCRIPT>var a = ;</SCRIPT>')).toHaveLength(1);
+  });
+
   it('reports a CSS rule missing its closing brace', () => {
     const code = '<style>\nhtml {\n scrollbar-width: none;\n\n</style>';
     const diagnostics = lintCode(code);

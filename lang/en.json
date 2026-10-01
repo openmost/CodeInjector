@@ -1,10 +1,13 @@
 {
   "CodeInjector": {
     "CodeInjector": "Code Injector",
+    "PageIntro": "Inject HTML, CSS or JavaScript into every page of the Matomo interface, for every user. Only super users can edit this code.",
+    "SaveSuccess": "The code has been saved.",
     "BodyTopTitle": "Code at the top of the body tag",
-    "BodyTopDescription": "Injected right after the opening body tag of every Matomo page, before the page content. Wrap your code in script or style tags. The code is not injected on this settings page, so a snippet breaking the interface can always be fixed here.",
+    "BodyTopDescription": "Injected right after the opening body tag of every Matomo page, before the page content. Wrap your code in script or style tags.",
     "BodyBottomTitle": "Code at the bottom of the body tag",
-    "BodyBottomDescription": "Injected right before the closing body tag of every Matomo page, after the page content. Wrap your code in script or style tags. The code is not injected on this settings page, so a snippet breaking the interface can always be fixed here.",
+    "BodyBottomDescription": "Injected right before the closing body tag of every Matomo page, after the page content. Wrap your code in script or style tags.",
+    "SafeModeNotice": "The code is not injected on this page, so a snippet breaking the interface can always be fixed here.",
     "JavaScriptSyntaxError": "JavaScript syntax error: %1$s",
     "JsonSyntaxError": "JSON syntax error: %1$s",
     "CssSyntaxError": "CSS syntax error near %1$s (missing or extra brace, colon or semicolon?)",
@@ -14,5 +17,16 @@
     "MissingTags": "This code is not wrapped in a script or style tag, it will be displayed as text in every page.",
     "SyntaxValid": "Syntax valid",
     "SyntaxMayContainErrors": "Syntax may contain errors"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "Dismiss",
+    "WidgetName": "Openmost: AI chatbot tracking setup",
+    "AIChatbotsTitle": "Need help setting up AI chatbot tracking?",
+    "AIChatbotsBody": "As an official Matomo Implementation Partner, Openmost can configure AI chatbot tracking for you, on Matomo On-Premise or Cloud.",
+    "AIChatbotsCta": "Get it set up for me",
+    "TrackingPlanTitle": "Events need to be set up manually",
+    "TrackingPlanBody": "Events measure clicks, downloads, form submissions or video plays, once they are tracked. As an official Matomo Implementation Partner, Openmost designs and implements a tracking plan that fits your site.",
+    "TrackingPlanCta": "Build my tracking plan",
+    "EventsEnhancedLink": "Get more out of your events with Events Enhanced"
   }
 }

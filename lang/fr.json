@@ -1,10 +1,13 @@
 {
   "CodeInjector": {
     "CodeInjector": "Code Injector",
+    "PageIntro": "Injectez du HTML, du CSS ou du JavaScript dans chaque page de l'interface Matomo, pour tous les utilisateurs. Seuls les super utilisateurs peuvent modifier ce code.",
+    "SaveSuccess": "Le code a été enregistré.",
     "BodyTopTitle": "Code en haut de la balise body",
-    "BodyTopDescription": "Injecté juste après l'ouverture de la balise body de chaque page de Matomo, avant le contenu de la page. Placez votre code dans des balises script ou style. Le code n'est pas injecté sur cette page de réglages, un code qui casse l'interface peut donc toujours être corrigé ici.",
+    "BodyTopDescription": "Injecté juste après l'ouverture de la balise body de chaque page de Matomo, avant le contenu de la page. Placez votre code dans des balises script ou style.",
     "BodyBottomTitle": "Code en bas de la balise body",
-    "BodyBottomDescription": "Injecté juste avant la fermeture de la balise body de chaque page de Matomo, après le contenu de la page. Placez votre code dans des balises script ou style. Le code n'est pas injecté sur cette page de réglages, un code qui casse l'interface peut donc toujours être corrigé ici.",
+    "BodyBottomDescription": "Injecté juste avant la fermeture de la balise body de chaque page de Matomo, après le contenu de la page. Placez votre code dans des balises script ou style.",
+    "SafeModeNotice": "Le code n'est pas injecté sur cette page, un code qui casse l'interface peut donc toujours être corrigé ici.",
     "JavaScriptSyntaxError": "Erreur de syntaxe JavaScript : %1$s",
     "JsonSyntaxError": "Erreur de syntaxe JSON : %1$s",
     "CssSyntaxError": "Erreur de syntaxe CSS près de %1$s (accolade, deux-points ou point-virgule manquant ou en trop ?)",
@@ -14,5 +17,16 @@
     "MissingTags": "Ce code n'est pas placé dans une balise script ou style, il sera affiché comme du texte sur chaque page.",
     "SyntaxValid": "Syntaxe valide",
     "SyntaxMayContainErrors": "La syntaxe peut contenir des erreurs"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "Masquer",
+    "WidgetName": "Openmost : configuration du suivi des chatbots IA",
+    "AIChatbotsTitle": "Besoin d'aide pour configurer le suivi des chatbots IA ?",
+    "AIChatbotsBody": "Implementation Partner officiel de Matomo, Openmost peut configurer le suivi des chatbots IA pour vous, sur Matomo On-Premise ou Cloud.",
+    "AIChatbotsCta": "Faire configurer le suivi",
+    "TrackingPlanTitle": "Les événements doivent être configurés manuellement",
+    "TrackingPlanBody": "Les événements mesurent les clics, téléchargements, envois de formulaires ou lectures vidéo, à condition d'être suivis. Implementation Partner officiel de Matomo, Openmost conçoit et met en place un plan de marquage adapté à votre site.",
+    "TrackingPlanCta": "Construire mon plan de marquage",
+    "EventsEnhancedLink": "Tirez davantage de vos événements avec Events Enhanced"
   }
 }

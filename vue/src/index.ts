@@ -6,3 +6,4 @@
  */
 
 export { default as FieldCodeEditor } from './CodeEditor/FieldCodeEditor.vue';
+export { default as ManageCode } from './ManageCode/ManageCode.vue';

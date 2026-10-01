@@ -1,0 +1,32 @@
+{
+  "CodeInjector": {
+    "CodeInjector": "Code Injector",
+    "PageIntro": "向 Matomo 界面的每个页面注入 HTML、CSS 或 JavaScript，对所有用户生效。只有超级用户可以编辑此代码。",
+    "SaveSuccess": "代码已保存。",
+    "BodyTopTitle": "body 标签顶部的代码",
+    "BodyTopDescription": "注入到每个 Matomo 页面 body 开始标签之后、页面内容之前。请将代码包裹在 script 或 style 标签中。",
+    "BodyBottomTitle": "body 标签底部的代码",
+    "BodyBottomDescription": "注入到每个 Matomo 页面 body 结束标签之前、页面内容之后。请将代码包裹在 script 或 style 标签中。",
+    "SafeModeNotice": "此页面不会注入代码，因此即使代码片段导致界面出错，也始终可以在这里修复。",
+    "JavaScriptSyntaxError": "JavaScript 语法错误：%1$s",
+    "JsonSyntaxError": "JSON 语法错误：%1$s",
+    "CssSyntaxError": "%1$s 附近存在 CSS 语法错误（是否缺少或多了花括号、冒号或分号？）",
+    "HtmlSyntaxError": "%1$s 附近存在 HTML 语法错误（标签无效或不匹配？）",
+    "UnclosedScriptTag": "此 script 标签未闭合，会吞掉 Matomo 页面的其余部分。",
+    "UnclosedStyleTag": "此 style 标签未闭合，会隐藏 Matomo 页面的其余部分。",
+    "MissingTags": "此代码未包裹在 script 或 style 标签中，将以文本形式显示在每个页面上。",
+    "SyntaxValid": "语法有效",
+    "SyntaxMayContainErrors": "语法可能存在错误"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "关闭",
+    "WidgetName": "Openmost：AI 聊天机器人跟踪设置",
+    "AIChatbotsTitle": "需要帮助设置 AI 聊天机器人跟踪吗？",
+    "AIChatbotsBody": "作为 Matomo 官方 Implementation Partner，Openmost 可以为您配置 AI 聊天机器人跟踪，适用于 Matomo On-Premise 或 Cloud。",
+    "AIChatbotsCta": "请人帮我配置",
+    "TrackingPlanTitle": "事件需要手动配置",
+    "TrackingPlanBody": "事件可以衡量点击、下载、表单提交或视频播放，前提是已完成跟踪配置。作为 Matomo 官方 Implementation Partner，Openmost 为您的网站设计并实施合适的跟踪方案。",
+    "TrackingPlanCta": "制定我的跟踪方案",
+    "EventsEnhancedLink": "使用 Events Enhanced 充分利用您的事件数据"
+  }
+}

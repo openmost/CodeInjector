@@ -1,0 +1,32 @@
+{
+  "CodeInjector": {
+    "CodeInjector": "Code Injector",
+    "PageIntro": "Wstaw HTML, CSS lub JavaScript na każdej stronie interfejsu Matomo, dla wszystkich użytkowników. Tylko superużytkownicy mogą edytować ten kod.",
+    "SaveSuccess": "Kod został zapisany.",
+    "BodyTopTitle": "Kod na początku znacznika body",
+    "BodyTopDescription": "Wstawiany zaraz po otwierającym znaczniku body na każdej stronie Matomo, przed treścią strony. Umieść kod w znacznikach script lub style.",
+    "BodyBottomTitle": "Kod na końcu znacznika body",
+    "BodyBottomDescription": "Wstawiany tuż przed zamykającym znacznikiem body na każdej stronie Matomo, po treści strony. Umieść kod w znacznikach script lub style.",
+    "SafeModeNotice": "Kod nie jest wstawiany na tej stronie, więc fragment psujący interfejs zawsze można tutaj poprawić.",
+    "JavaScriptSyntaxError": "Błąd składni JavaScript: %1$s",
+    "JsonSyntaxError": "Błąd składni JSON: %1$s",
+    "CssSyntaxError": "Błąd składni CSS w pobliżu %1$s (brakujący lub nadmiarowy nawias klamrowy, dwukropek lub średnik?)",
+    "HtmlSyntaxError": "Błąd składni HTML w pobliżu %1$s (nieprawidłowy lub niedopasowany znacznik?)",
+    "UnclosedScriptTag": "Ten znacznik script nigdy nie jest zamknięty, pochłonąłby resztę strony Matomo.",
+    "UnclosedStyleTag": "Ten znacznik style nigdy nie jest zamknięty, ukryłby resztę strony Matomo.",
+    "MissingTags": "Ten kod nie jest umieszczony w znaczniku script ani style, zostanie wyświetlony jako tekst na każdej stronie.",
+    "SyntaxValid": "Składnia poprawna",
+    "SyntaxMayContainErrors": "Składnia może zawierać błędy"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "Odrzuć",
+    "WidgetName": "Openmost: konfiguracja śledzenia chatbotów AI",
+    "AIChatbotsTitle": "Potrzebujesz pomocy w konfiguracji śledzenia chatbotów AI?",
+    "AIChatbotsBody": "Jako oficjalny partner Matomo (Implementation Partner) Openmost może skonfigurować śledzenie chatbotów AI za Ciebie, w Matomo On-Premise lub Cloud.",
+    "AIChatbotsCta": "Zleć konfigurację",
+    "TrackingPlanTitle": "Zdarzenia trzeba skonfigurować ręcznie",
+    "TrackingPlanBody": "Zdarzenia mierzą kliknięcia, pobrania, wysłane formularze czy odtworzenia wideo, pod warunkiem że są śledzone. Jako oficjalny partner Matomo (Implementation Partner) Openmost projektuje i wdraża plan śledzenia dopasowany do Twojej strony.",
+    "TrackingPlanCta": "Stwórz mój plan śledzenia",
+    "EventsEnhancedLink": "Wyciśnij więcej ze swoich zdarzeń dzięki Events Enhanced"
+  }
+}

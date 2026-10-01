@@ -17,6 +17,9 @@ class CodeInjector extends \Piwik\Plugin
     public function registerEvents()
     {
         return [
+            'Template.afterEventsReport' => 'renderOpenmostCommunicationAfterEvents',
+            'Widget.filterWidgets' => 'addOpenmostCommunicationWidgets',
+            'Template.beforeContent' => 'renderOpenmostCommunication',
             'Template.bodyTop' => 'addCodeToBodyTop',
             'Template.bodyBottom' => 'addCodeToBodyBottom',
             'AssetManager.getStylesheetFiles' => 'getStylesheetFiles',
@@ -26,7 +29,7 @@ class CodeInjector extends \Piwik\Plugin
 
     public function shouldLoadUmdOnDemand()
     {
-        // The UMD bundles the code editor, it is only needed by the settings form
+        // The UMD bundles the code editor, it is only needed by the Code Injector admin page
         return true;
     }
 
@@ -47,6 +50,14 @@ class CodeInjector extends \Piwik\Plugin
 
     public function getClientSideTranslationKeys(&$translationKeys): void
     {
+        $translationKeys[] = 'CodeInjector_CodeInjector';
+        $translationKeys[] = 'CodeInjector_PageIntro';
+        $translationKeys[] = 'CodeInjector_SaveSuccess';
+        $translationKeys[] = 'CodeInjector_BodyTopTitle';
+        $translationKeys[] = 'CodeInjector_BodyTopDescription';
+        $translationKeys[] = 'CodeInjector_BodyBottomTitle';
+        $translationKeys[] = 'CodeInjector_BodyBottomDescription';
+        $translationKeys[] = 'CodeInjector_SafeModeNotice';
         $translationKeys[] = 'CodeInjector_JavaScriptSyntaxError';
         $translationKeys[] = 'CodeInjector_JsonSyntaxError';
         $translationKeys[] = 'CodeInjector_CssSyntaxError';
@@ -64,7 +75,7 @@ class CodeInjector extends \Piwik\Plugin
             return '';
         }
 
-        $settings = StaticContainer::get(SystemSettings::class);
+        $settings = StaticContainer::get(CodeSettings::class);
 
         return (string) $settings->$settingName->getValue();
     }
@@ -78,11 +89,26 @@ class CodeInjector extends \Piwik\Plugin
         try {
             $request = Request::fromGet();
 
-            return $request->getStringParameter('module', '') === 'CoreAdminHome'
-                && $request->getStringParameter('action', '') === 'generalSettings';
+            return $request->getStringParameter('module', '') === 'CodeInjector'
+                && $request->getStringParameter('action', 'index') === 'index';
         } catch (\InvalidArgumentException $e) {
             // module or action is not a string, this is not the settings page
             return false;
         }
+    }
+
+    public function renderOpenmostCommunication(&$out, $layout, $module = '', $action = '')
+    {
+        OpenmostCommunication::beforeContent($out, (string) $layout, (string) $module, (string) $action, $this->getPluginName());
+    }
+
+    public function addOpenmostCommunicationWidgets($list)
+    {
+        OpenmostCommunication::filterWidgets($list, $this->getPluginName());
+    }
+
+    public function renderOpenmostCommunicationAfterEvents(&$out, $dataTable = null)
+    {
+        OpenmostCommunication::afterEventsReport($out, $this->getPluginName());
     }
 }
