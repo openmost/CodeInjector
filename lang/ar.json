@@ -1,0 +1,35 @@
+{
+  "CodeInjector": {
+    "CodeInjector": "Code Injector",
+    "PageIntro": "احقن HTML أو CSS أو JavaScript في كل صفحة من واجهة Matomo، لجميع المستخدمين. يمكن للمستخدمين الخارقين فقط تعديل هذه الشيفرة.",
+    "SaveSuccess": "تم حفظ الشيفرة.",
+    "BodyTopTitle": "شيفرة في أعلى وسم body",
+    "BodyTopDescription": "تُحقن مباشرة بعد وسم body الافتتاحي في كل صفحة من صفحات Matomo، قبل محتوى الصفحة. ضع شيفرتك داخل وسوم script أو style.",
+    "BodyBottomTitle": "شيفرة في أسفل وسم body",
+    "BodyBottomDescription": "تُحقن مباشرة قبل وسم body الختامي في كل صفحة من صفحات Matomo، بعد محتوى الصفحة. ضع شيفرتك داخل وسوم script أو style.",
+    "SafeModeNotice": "لا تُحقن الشيفرة في هذه الصفحة، لذا يمكن دائمًا إصلاح أي مقتطف يعطّل الواجهة من هنا.",
+    "JavaScriptSyntaxError": "خطأ في صياغة JavaScript: %1$s",
+    "JsonSyntaxError": "خطأ في صياغة JSON: %1$s",
+    "CssSyntaxError": "خطأ في صياغة CSS قرب %1$s (قوس معقوف أو نقطتان أو فاصلة منقوطة مفقودة أو زائدة؟)",
+    "HtmlSyntaxError": "خطأ في صياغة HTML قرب %1$s (وسم غير صالح أو غير متطابق؟)",
+    "UnclosedScriptTag": "وسم script هذا غير مغلق، وسيبتلع بقية صفحة Matomo.",
+    "UnclosedStyleTag": "وسم style هذا غير مغلق، وسيخفي بقية صفحة Matomo.",
+    "MissingTags": "هذه الشيفرة ليست داخل وسم script أو style، وستُعرض كنص في كل صفحة.",
+    "SyntaxValid": "الصياغة صحيحة",
+    "SyntaxMayContainErrors": "قد تحتوي الصياغة على أخطاء"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "تجاهل",
+    "Matomo6Title": "Matomo 6 متاح الآن",
+    "Matomo6Body": "Openmost شريك تنفيذ رسمي لـ Matomo (Implementation Partner) ويعمل مع Matomo منذ 2016. الترقية الآن أسهل من اللحاق بالركب بعد بضعة أشهر: تصل الميزات الجديدة وتحسينات الأمان إلى Matomo 6 أولاً، وننقلك إليه مع الحفاظ على تقاريرك والتتبع كما هي.",
+    "Matomo6Cta": "خطّط لترقيتي إلى Matomo 6",
+    "WidgetName": "Openmost: إعداد تتبع روبوتات الدردشة بالذكاء الاصطناعي",
+    "AIChatbotsTitle": "هل تحتاج إلى مساعدة في إعداد تتبع روبوتات الدردشة بالذكاء الاصطناعي؟",
+    "AIChatbotsBody": "بصفتها شريك تنفيذ رسمياً لـ Matomo (Implementation Partner)، يمكن لـ Openmost إعداد تتبع روبوتات الدردشة بالذكاء الاصطناعي نيابةً عنك، على Matomo On-Premise أو Cloud.",
+    "AIChatbotsCta": "اطلب إعداده لي",
+    "TrackingPlanTitle": "يجب إعداد الأحداث يدوياً",
+    "TrackingPlanBody": "تقيس الأحداث النقرات والتنزيلات وإرسال النماذج وتشغيل الفيديو، بشرط أن يتم تتبعها. بصفتها شريك تنفيذ رسمياً لـ Matomo (Implementation Partner)، تصمم Openmost خطة تتبع مناسبة لموقعك وتنفذها.",
+    "TrackingPlanCta": "أنشئ خطة التتبع الخاصة بي",
+    "EventsEnhancedLink": "استفد أكثر من أحداثك مع Events Enhanced"
+  }
+}

@@ -1,9 +1,35 @@
 {
   "CodeInjector": {
-    "CodeInjector" : "Code Injector",
-    "BodyTopTitle": "Ajouter du code en haut de la balise body dans toutes les pages",
-    "BodyTopDescription": "Ce code sera exécuté sur toutes les pages. Attention, une mauvaise utilisation peut casser votre instance.",
-    "BodyBottomTitle": "Ajouter du code au bas de la balise body dans toutes les pages",
-    "BodyBottomDescription": "Ce code sera exécuté sur toutes les pages. Attention, une mauvaise utilisation peut casser votre instance."
+    "CodeInjector": "Code Injector",
+    "PageIntro": "Injectez du HTML, du CSS ou du JavaScript dans chaque page de l'interface Matomo, pour tous les utilisateurs. Seuls les super utilisateurs peuvent modifier ce code.",
+    "SaveSuccess": "Le code a été enregistré.",
+    "BodyTopTitle": "Code en haut de la balise body",
+    "BodyTopDescription": "Injecté juste après l'ouverture de la balise body de chaque page de Matomo, avant le contenu de la page. Placez votre code dans des balises script ou style.",
+    "BodyBottomTitle": "Code en bas de la balise body",
+    "BodyBottomDescription": "Injecté juste avant la fermeture de la balise body de chaque page de Matomo, après le contenu de la page. Placez votre code dans des balises script ou style.",
+    "SafeModeNotice": "Le code n'est pas injecté sur cette page, un code qui casse l'interface peut donc toujours être corrigé ici.",
+    "JavaScriptSyntaxError": "Erreur de syntaxe JavaScript : %1$s",
+    "JsonSyntaxError": "Erreur de syntaxe JSON : %1$s",
+    "CssSyntaxError": "Erreur de syntaxe CSS près de %1$s (accolade, deux-points ou point-virgule manquant ou en trop ?)",
+    "HtmlSyntaxError": "Erreur de syntaxe HTML près de %1$s (balise invalide ou mal fermée ?)",
+    "UnclosedScriptTag": "Cette balise script n'est jamais fermée, elle avalerait le reste de la page Matomo.",
+    "UnclosedStyleTag": "Cette balise style n'est jamais fermée, elle masquerait le reste de la page Matomo.",
+    "MissingTags": "Ce code n'est pas placé dans une balise script ou style, il sera affiché comme du texte sur chaque page.",
+    "SyntaxValid": "Syntaxe valide",
+    "SyntaxMayContainErrors": "La syntaxe peut contenir des erreurs"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "Masquer",
+    "Matomo6Title": "Matomo 6 est là",
+    "Matomo6Body": "Openmost est Implementation Partner officiel de Matomo et travaille avec Matomo depuis 2016. Migrer maintenant est plus simple que de rattraper le retard dans quelques mois : les nouveautés et les améliorations de sécurité arrivent d'abord sur Matomo 6, et nous vous y amenons sans perdre vos rapports ni votre suivi.",
+    "Matomo6Cta": "Planifier ma migration vers Matomo 6",
+    "WidgetName": "Openmost : configuration du suivi des chatbots IA",
+    "AIChatbotsTitle": "Besoin d'aide pour configurer le suivi des chatbots IA ?",
+    "AIChatbotsBody": "Implementation Partner officiel de Matomo, Openmost peut configurer le suivi des chatbots IA pour vous, sur Matomo On-Premise ou Cloud.",
+    "AIChatbotsCta": "Faire configurer le suivi",
+    "TrackingPlanTitle": "Les événements doivent être configurés manuellement",
+    "TrackingPlanBody": "Les événements mesurent les clics, téléchargements, envois de formulaires ou lectures vidéo, à condition d'être suivis. Implementation Partner officiel de Matomo, Openmost conçoit et met en place un plan de marquage adapté à votre site.",
+    "TrackingPlanCta": "Construire mon plan de marquage",
+    "EventsEnhancedLink": "Tirez davantage de vos événements avec Events Enhanced"
   }
 }

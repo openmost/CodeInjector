@@ -1,0 +1,11 @@
+{% extends 'admin.twig' %}
+
+{% set title %}{{ 'CodeInjector_CodeInjector'|translate }}{% endset %}
+
+{% block content %}
+    <div
+        vue-entry="CodeInjector.ManageCode"
+        initial-body-top="{{ code.bodyTop|json_encode }}"
+        initial-body-bottom="{{ code.bodyBottom|json_encode }}"
+    ></div>
+{% endblock %}

@@ -1,31 +1,40 @@
 {
     "name": "CodeInjector",
-    "description": "Inject CSS and JS code to your Matomo instance",
-    "version": "5.0.10",
+    "description": "Inject your own HTML, CSS and JavaScript into every Matomo page, with a syntax-checking code editor.",
+    "version": "5.1.0",
     "theme": false,
     "require": {
-        "matomo": ">=5.0.0-b1,<6.0.0-b1"
+        "php": ">=7.2.5",
+        "matomo": ">=5.10.0,<6.0.0-b1"
     },
     "authors": [
         {
             "name": "Openmost",
-            "email": "ronan@openmost.io",
-            "homepage": "https://openmost.io"
+            "email": "ronan@openmost.com",
+            "homepage": "https://openmost.com"
         }
     ],
     "support": {
-        "email": "ronan@openmost.io",
+        "email": "ronan@openmost.com",
         "issues": "https://github.com/openmost/CodeInjector/issues",
         "source": "https://github.com/openmost/CodeInjector"
     },
-    "homepage":"https://openmost.io/products/code-injector/",
+    "homepage": "https://openmost.com/matomo/extensions/code-injector",
+    "preview": {
+        "video_url": "https://www.youtube-nocookie.com/embed/RmB6fFVY2xo"
+    },
     "license": "GPL v3+",
     "keywords": [
         "code",
         "injector",
-        "add",
+        "inject",
         "head",
-        "body"
+        "body",
+        "css",
+        "javascript",
+        "html",
+        "code-editor",
+        "customization"
     ],
-    "categories": "development"
+    "category": "customisation"
 }

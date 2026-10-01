@@ -1,0 +1,35 @@
+{
+  "CodeInjector": {
+    "CodeInjector": "Code Injector",
+    "PageIntro": "Voeg HTML, CSS of JavaScript in op elke pagina van de Matomo-interface, voor alle gebruikers. Alleen superusers kunnen deze code bewerken.",
+    "SaveSuccess": "De code is opgeslagen.",
+    "BodyTopTitle": "Code bovenaan de body-tag",
+    "BodyTopDescription": "Wordt direct na de openingstag body van elke Matomo-pagina ingevoegd, vóór de pagina-inhoud. Plaats uw code tussen script- of style-tags.",
+    "BodyBottomTitle": "Code onderaan de body-tag",
+    "BodyBottomDescription": "Wordt direct vóór de sluitende body-tag van elke Matomo-pagina ingevoegd, na de pagina-inhoud. Plaats uw code tussen script- of style-tags.",
+    "SafeModeNotice": "De code wordt niet ingevoegd op deze pagina, zodat een fragment dat de interface breekt hier altijd kan worden hersteld.",
+    "JavaScriptSyntaxError": "JavaScript-syntaxisfout: %1$s",
+    "JsonSyntaxError": "JSON-syntaxisfout: %1$s",
+    "CssSyntaxError": "CSS-syntaxisfout bij %1$s (ontbrekende of overtollige accolade, dubbele punt of puntkomma?)",
+    "HtmlSyntaxError": "HTML-syntaxisfout bij %1$s (ongeldige of niet-overeenkomende tag?)",
+    "UnclosedScriptTag": "Deze script-tag wordt nooit gesloten en zou de rest van de Matomo-pagina opslokken.",
+    "UnclosedStyleTag": "Deze style-tag wordt nooit gesloten en zou de rest van de Matomo-pagina verbergen.",
+    "MissingTags": "Deze code staat niet tussen een script- of style-tag en wordt op elke pagina als tekst weergegeven.",
+    "SyntaxValid": "Syntaxis geldig",
+    "SyntaxMayContainErrors": "Syntaxis bevat mogelijk fouten"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "Sluiten",
+    "Matomo6Title": "Matomo 6 is er",
+    "Matomo6Body": "Openmost is officieel Matomo Implementation Partner en werkt sinds 2016 met Matomo. Nu upgraden is eenvoudiger dan over een paar maanden een achterstand inhalen: nieuwe functies en beveiligingsverbeteringen komen eerst in Matomo 6, en wij brengen u daar met uw rapporten en tracking intact.",
+    "Matomo6Cta": "Mijn Matomo 6-upgrade plannen",
+    "WidgetName": "Openmost: instellen van AI-chatbottracking",
+    "AIChatbotsTitle": "Hulp nodig bij het instellen van AI-chatbottracking?",
+    "AIChatbotsBody": "Als officieel Matomo Implementation Partner kan Openmost AI-chatbottracking voor u instellen, op Matomo On-Premise of Cloud.",
+    "AIChatbotsCta": "Laat het voor mij instellen",
+    "TrackingPlanTitle": "Gebeurtenissen moeten handmatig worden ingesteld",
+    "TrackingPlanBody": "Gebeurtenissen meten klikken, downloads, formulierverzendingen of videoweergaven, zodra ze worden gemeten. Als officieel Matomo Implementation Partner ontwerpt en implementeert Openmost een trackingplan dat bij uw site past.",
+    "TrackingPlanCta": "Mijn trackingplan opstellen",
+    "EventsEnhancedLink": "Haal meer uit uw gebeurtenissen met Events Enhanced"
+  }
+}

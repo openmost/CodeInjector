@@ -1,0 +1,35 @@
+{
+  "CodeInjector": {
+    "CodeInjector": "Code Injector",
+    "PageIntro": "Fügen Sie HTML, CSS oder JavaScript in jede Seite der Matomo-Oberfläche ein, für alle Benutzer. Nur Superuser können diesen Code bearbeiten.",
+    "SaveSuccess": "Der Code wurde gespeichert.",
+    "BodyTopTitle": "Code am Anfang des body-Tags",
+    "BodyTopDescription": "Wird direkt nach dem öffnenden body-Tag jeder Matomo-Seite eingefügt, vor dem Seiteninhalt. Umschließen Sie Ihren Code mit script- oder style-Tags.",
+    "BodyBottomTitle": "Code am Ende des body-Tags",
+    "BodyBottomDescription": "Wird direkt vor dem schließenden body-Tag jeder Matomo-Seite eingefügt, nach dem Seiteninhalt. Umschließen Sie Ihren Code mit script- oder style-Tags.",
+    "SafeModeNotice": "Auf dieser Seite wird der Code nicht eingefügt, sodass ein Snippet, das die Oberfläche beschädigt, hier jederzeit korrigiert werden kann.",
+    "JavaScriptSyntaxError": "JavaScript-Syntaxfehler: %1$s",
+    "JsonSyntaxError": "JSON-Syntaxfehler: %1$s",
+    "CssSyntaxError": "CSS-Syntaxfehler bei %1$s (fehlende oder überzählige Klammer, Doppelpunkt oder Semikolon?)",
+    "HtmlSyntaxError": "HTML-Syntaxfehler bei %1$s (ungültiges oder nicht passendes Tag?)",
+    "UnclosedScriptTag": "Dieses script-Tag wird nie geschlossen, es würde den Rest der Matomo-Seite verschlucken.",
+    "UnclosedStyleTag": "Dieses style-Tag wird nie geschlossen, es würde den Rest der Matomo-Seite ausblenden.",
+    "MissingTags": "Dieser Code ist nicht von einem script- oder style-Tag umschlossen, er wird auf jeder Seite als Text angezeigt.",
+    "SyntaxValid": "Syntax gültig",
+    "SyntaxMayContainErrors": "Syntax enthält möglicherweise Fehler"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "Ausblenden",
+    "Matomo6Title": "Matomo 6 ist da",
+    "Matomo6Body": "Openmost ist offizieller Matomo Implementation Partner und arbeitet seit 2016 mit Matomo. Jetzt zu aktualisieren ist einfacher, als in einigen Monaten aufzuholen: Neue Funktionen und Sicherheitsverbesserungen erscheinen zuerst in Matomo 6, und wir bringen Sie dorthin, ohne dass Berichte oder Tracking verloren gehen.",
+    "Matomo6Cta": "Mein Matomo-6-Upgrade planen",
+    "WidgetName": "Openmost: Einrichtung des KI-Chatbot-Trackings",
+    "AIChatbotsTitle": "Brauchen Sie Hilfe beim Einrichten des KI-Chatbot-Trackings?",
+    "AIChatbotsBody": "Als offizieller Matomo Implementation Partner richtet Openmost das KI-Chatbot-Tracking für Sie ein, auf Matomo On-Premise oder Cloud.",
+    "AIChatbotsCta": "Tracking einrichten lassen",
+    "TrackingPlanTitle": "Ereignisse müssen manuell eingerichtet werden",
+    "TrackingPlanBody": "Ereignisse messen Klicks, Downloads, Formularübermittlungen oder Videowiedergaben, sobald sie erfasst werden. Als offizieller Matomo Implementation Partner konzipiert und setzt Openmost einen Tracking-Plan um, der zu Ihrer Website passt.",
+    "TrackingPlanCta": "Meinen Tracking-Plan erstellen",
+    "EventsEnhancedLink": "Holen Sie mit Events Enhanced mehr aus Ihren Ereignissen heraus"
+  }
+}

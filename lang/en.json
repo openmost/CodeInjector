@@ -1,9 +1,35 @@
 {
   "CodeInjector": {
-    "CodeInjector" : "Code Injector",
-    "BodyTopTitle": "Add code at the top of body tag in all pages",
-    "BodyTopDescription": "This code will be executed on all pages. Be careful, bad usage can break your instance.",
-    "BodyBottomTitle": "Add code at the bottom of body tag in all pages",
-    "BodyBottomDescription": "This code will be executed on all pages. Be careful, bad usage can break your instance."
+    "CodeInjector": "Code Injector",
+    "PageIntro": "Inject HTML, CSS or JavaScript into every page of the Matomo interface, for every user. Only super users can edit this code.",
+    "SaveSuccess": "The code has been saved.",
+    "BodyTopTitle": "Code at the top of the body tag",
+    "BodyTopDescription": "Injected right after the opening body tag of every Matomo page, before the page content. Wrap your code in script or style tags.",
+    "BodyBottomTitle": "Code at the bottom of the body tag",
+    "BodyBottomDescription": "Injected right before the closing body tag of every Matomo page, after the page content. Wrap your code in script or style tags.",
+    "SafeModeNotice": "The code is not injected on this page, so a snippet breaking the interface can always be fixed here.",
+    "JavaScriptSyntaxError": "JavaScript syntax error: %1$s",
+    "JsonSyntaxError": "JSON syntax error: %1$s",
+    "CssSyntaxError": "CSS syntax error near %1$s (missing or extra brace, colon or semicolon?)",
+    "HtmlSyntaxError": "HTML syntax error near %1$s (invalid or mismatched tag?)",
+    "UnclosedScriptTag": "This script tag is never closed, it would swallow the rest of the Matomo page.",
+    "UnclosedStyleTag": "This style tag is never closed, it would hide the rest of the Matomo page.",
+    "MissingTags": "This code is not wrapped in a script or style tag, it will be displayed as text in every page.",
+    "SyntaxValid": "Syntax valid",
+    "SyntaxMayContainErrors": "Syntax may contain errors"
+  },
+  "OpenmostCommunication": {
+    "Dismiss": "Dismiss",
+    "Matomo6Title": "Matomo 6 is here",
+    "Matomo6Body": "Openmost is an official Matomo Implementation Partner, working with Matomo since 2016. Upgrading now is simpler than catching up in a few months: new features and security improvements land on Matomo 6 first, and we move you there with your reports and tracking intact.",
+    "Matomo6Cta": "Plan my Matomo 6 upgrade",
+    "WidgetName": "Openmost: AI chatbot tracking setup",
+    "AIChatbotsTitle": "Need help setting up AI chatbot tracking?",
+    "AIChatbotsBody": "As an official Matomo Implementation Partner, Openmost can configure AI chatbot tracking for you, on Matomo On-Premise or Cloud.",
+    "AIChatbotsCta": "Get it set up for me",
+    "TrackingPlanTitle": "Events need to be set up manually",
+    "TrackingPlanBody": "Events measure clicks, downloads, form submissions or video plays, once they are tracked. As an official Matomo Implementation Partner, Openmost designs and implements a tracking plan that fits your site.",
+    "TrackingPlanCta": "Build my tracking plan",
+    "EventsEnhancedLink": "Get more out of your events with Events Enhanced"
   }
 }

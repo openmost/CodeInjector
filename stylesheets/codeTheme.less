@@ -1,0 +1,74 @@
+// Openmost code palette, shared by the code editors (CodeMirror, vue/src/codeTheme.ts) and the
+// read-only code blocks of the Openmost plugins. It reproduces the code blocks of the ChatGPT
+// plugin chat: light surface and GitHub-like colours in light mode, a matching dark variant.
+//
+// Canonical source: TagManagerExtended for Matomo 6, stylesheets/codeTheme.less. Identical copies
+// live in CodeInjector, Audit, AuditPremium and HooksViewer (Matomo 5 and 6), CustomWidgets
+// (Matomo 6) and TagManagerExtended (Matomo 5): edit the canonical file, then copy it unchanged.
+//
+// Every colour is a --om-code-* variable on the root element, so the editor tooltips rendered in
+// the body get them too. The palette follows the Matomo theme mode like the core variables, and
+// the data-om-code-scheme attribute (set by codeTheme.ts from the rendered background) overrides
+// it when a theme forces dark or light colours without switching the mode (DarkTheme on Matomo 5).
+// The color-mix() values are escaped, the Matomo 5 LESS compiler would try to evaluate them.
+
+.om-code-light-palette() {
+  --om-code-border: ~"color-mix(in srgb, var(--om-code-fg) 12%, transparent)";
+  --om-code-comment: #5c6670;
+  --om-code-keyword: #8250df;
+  --om-code-string: #0a6b2d;
+  --om-code-number: #0550ae;
+  --om-code-function: #8a3500;
+  --om-code-property: #0550ae;
+  --om-code-literal: #b3261e;
+  --om-code-tag: #116329;
+  --om-code-error: #b3261e;
+  --om-code-warning: #7d4e00;
+  --om-code-active-line: ~"color-mix(in srgb, #fff 70%, transparent)";
+  --om-code-selection: ~"color-mix(in srgb, var(--om-code-number) 15%, transparent)";
+  --om-code-highlight: ~"color-mix(in srgb, var(--om-code-warning) 18%, transparent)";
+}
+
+.om-code-dark-palette() {
+  --om-code-border: ~"color-mix(in srgb, var(--om-code-fg) 16%, transparent)";
+  --om-code-comment: #9aa4ae;
+  --om-code-keyword: #d2a8ff;
+  --om-code-string: #a5d6ff;
+  --om-code-number: #79c0ff;
+  --om-code-function: #ffa657;
+  --om-code-property: #79c0ff;
+  --om-code-literal: #ff9b8f;
+  --om-code-tag: #7ee787;
+  --om-code-error: #ff9b8f;
+  --om-code-warning: #e3b341;
+  --om-code-active-line: ~"color-mix(in srgb, var(--om-code-fg) 6%, transparent)";
+  --om-code-selection: ~"color-mix(in srgb, var(--om-code-number) 24%, transparent)";
+  --om-code-highlight: ~"color-mix(in srgb, var(--om-code-warning) 25%, transparent)";
+}
+
+:root {
+  --om-code-font: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --om-code-bg: var(--theme-color-background-base, #f5f5f5);
+  --om-code-fg: var(--theme-color-text, #212121);
+  --om-code-surface: var(--theme-color-background-contrast, #fff);
+  --om-code-radius: 8px;
+  .om-code-light-palette();
+}
+
+[data-theme-mode="dark"] {
+  .om-code-dark-palette();
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme-mode="auto"] {
+    .om-code-dark-palette();
+  }
+}
+
+:root[data-om-code-scheme="light"] {
+  .om-code-light-palette();
+}
+
+:root[data-om-code-scheme="dark"] {
+  .om-code-dark-palette();
+}
