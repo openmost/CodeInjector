@@ -5,7 +5,7 @@
     "theme": false,
     "require": {
         "php": ">=7.2.5",
-        "matomo": ">=5.10.0,<6.0.0-b1"
+        "matomo": ">=5.0.0,<6.0.0-b1"
     },
     "authors": [
         {

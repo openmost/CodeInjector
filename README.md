@@ -14,7 +14,7 @@ Inject your own HTML, CSS and JavaScript into every page of the Matomo interface
 
 ## Requirements
 
-- Matomo 5.10.0 or higher, below 6.0.0
+- Matomo 5.0.0 or higher, below 6.0.0
 - PHP 7.2.5 or higher
 
 ## Installation / Configuration
