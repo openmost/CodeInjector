@@ -2,7 +2,7 @@
 
 ### v5.1.0
 
-- Requires Matomo 5.0.0 or higher (`>=5.0.0,<6.0.0-b1`). The code editor and the Openmost banner fall back to the Matomo light theme colors when the theme color variables are not available (before Matomo 5.10.0).
+- Requires Matomo 5.0.0 or higher (`>=5.0.0,<6.0.0-b1`). The code editor falls back to the Matomo light theme colors when the theme color variables are not available (before Matomo 5.10.0).
 - The code is edited on a dedicated **Administration > System > Code Injector** page instead of the General settings, existing code is kept
 - New `CodeInjector.getCode` and `CodeInjector.setCode` API methods (super user only, saving requires the password confirmation)
 - Code editor with HTML, CSS and JavaScript syntax highlighting, in a light and dark palette that follows the Matomo theme
