@@ -10,6 +10,7 @@
 - The code is not injected on the Code Injector page, so a snippet breaking the interface can always be fixed
 - Interface translated into 12 languages
 - Shorter Marketplace description that fits the plugin cards, and campaign parameters on the Openmost links of the README.
+- README: the plugin description now shows in the Description tab of the Matomo Marketplace.
 
 ### v5.0.10
 
