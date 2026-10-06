@@ -1,8 +1,10 @@
 # Matomo CodeInjector Plugin
 
+## Description
+
 Inject your own HTML, CSS and JavaScript into every page of the Matomo interface, from a code editor that checks your syntax as you type.
 
-## Features
+### Features
 
 - **Two injection points**: right after the opening `<body>` tag and right before the closing `</body>` tag, through the native `Template.bodyTop` and `Template.bodyBottom` hooks
 - **Dedicated admin page**: edit the code in **Administration > System > Code Injector**, saving asks for your password like any system setting
@@ -12,12 +14,12 @@ Inject your own HTML, CSS and JavaScript into every page of the Matomo interface
 - **API**: `CodeInjector.getCode` returns the code and `CodeInjector.setCode` saves it (super user only, password confirmation required)
 - Interface translated into 12 languages
 
-## Requirements
+### Requirements
 
 - Matomo 6.0.0 or higher, below 7.0.0
 - PHP 8.1 or higher
 
-## Installation / Configuration
+### Installation / Configuration
 
 1. Install and activate the plugin from the Matomo Marketplace (**Administration > Platform > Marketplace**).
 2. Go to **Administration > System > Code Injector**.
@@ -26,11 +28,11 @@ Inject your own HTML, CSS and JavaScript into every page of the Matomo interface
 
 Only super users can see the page and edit the code. Once saved, the code runs in every page of the Matomo interface, for every user, including the login page. It is not added to the JavaScript tracker or to Tag Manager containers.
 
-## Privacy and data
+### Privacy and data
 
 The code is stored in the Matomo database as a plugin system setting. The plugin itself sends nothing outside your Matomo instance, but the code you inject runs in the browser of every Matomo user: only paste code you understand and trust.
 
-## Need help with Matomo?
+### Need help with Matomo?
 
 Openmost is an official Matomo Implementation Partner. When injected code grows beyond a few tweaks, we turn it into a [custom Matomo plugin](https://openmost.com/matomo/services/plugin-development?utm_source=matomo_marketplace&utm_medium=referral&utm_campaign=services&utm_content=codeinjector), built from a written spec, tested on the Matomo versions you run and maintained over time.
 
