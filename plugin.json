@@ -1,7 +1,7 @@
 {
     "name": "CodeInjector",
     "description": "Inject your own HTML, CSS and JavaScript into every Matomo page, with a syntax-checking code editor.",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "theme": false,
     "require": {
         "php": ">=7.2.5",

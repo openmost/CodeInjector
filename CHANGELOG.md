@@ -1,5 +1,9 @@
 ## Changelog
 
+### v5.1.1
+
+- Request parameters are read with `Piwik\Request` instead of the deprecated `Common::getRequestVar`, ready for the next Matomo versions.
+
 ### v5.1.0
 
 - Requires Matomo 5.0.0 or higher (`>=5.0.0,<6.0.0-b1`). The code editor falls back to the Matomo light theme colors when the theme color variables are not available (before Matomo 5.10.0).
