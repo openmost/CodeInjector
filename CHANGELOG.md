@@ -1,5 +1,9 @@
 ## Changelog
 
+### v6.1.1
+
+- Request parameters are read with `Piwik\Request` instead of the deprecated `Common::getRequestVar`, ready for the next Matomo versions.
+
 ### v6.1.0
 
 - The code is edited on a dedicated **Administration > System > Code Injector** page instead of the General settings, existing code is kept
